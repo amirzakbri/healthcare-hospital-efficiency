@@ -1,0 +1,89 @@
+{
+  "tables": {
+    "AgeGroups": [
+      "AgeGroup",
+      "AgeSort"
+    ],
+    "Conditions": [
+      "ConditionKey",
+      "ConditionDescription",
+      "Condition"
+    ],
+    "Discharges": [
+      "DischargeKey",
+      "HospitalKey",
+      "ConditionKey",
+      "SeverityKey",
+      "AgeGroup",
+      "PrimaryPayer",
+      "StayBand",
+      "DischargeYear",
+      "ExactLOS",
+      "LOSCensored",
+      "BedDaysLowerBound",
+      "Disposition",
+      "AdmissionType",
+      "MortalityRisk",
+      "EDIndicator",
+      "ExpectedLOS",
+      "BenchmarkEligible",
+      "PeerN",
+      "PeerHospitals",
+      "EstimatedCost",
+      "Charges"
+    ],
+    "Hospitals": [
+      "HospitalKey",
+      "HospitalName",
+      "HospitalCounty"
+    ],
+    "Payers": [
+      "PrimaryPayer"
+    ],
+    "Scenario": [
+      "ReductionPct"
+    ],
+    "Severity": [
+      "SeverityKey",
+      "Severity"
+    ],
+    "StayBands": [
+      "StayBand",
+      "BandSort"
+    ]
+  },
+  "relationships": 6,
+  "measures": [
+    "Discharges",
+    "Hospitals",
+    "Exact LOS Discharges",
+    "Avg LOS (under 120 days)",
+    "Median LOS (under 120 days)",
+    "Censored Stays",
+    "Censored Share",
+    "Estimated Cost",
+    "Avg Estimated Cost",
+    "Median Estimated Cost",
+    "Charges",
+    "Matched Discharges",
+    "Benchmark Coverage",
+    "Observed Matched Days",
+    "Expected Matched Days",
+    "Observed Matched LOS",
+    "Expected Matched LOS",
+    "LOS Index",
+    "Peer Reference",
+    "Selected Reduction",
+    "Scenario Bed Days",
+    "Scenario Remaining Days",
+    "Eligible Avg Cost",
+    "LOS Variance Days",
+    "Hospital Cost Rank",
+    "Cumulative Estimated Cost",
+    "Cumulative Cost %",
+    "Scenario Bridge Value"
+  ],
+  "disconnected_table": "Scenario",
+  "date_grain": "Annual; no fabricated daily calendar",
+  "optional_disconnected_table": "ScenarioBridge (created in Power BI for the scenario waterfall)"
+}

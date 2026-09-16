@@ -1,0 +1,198 @@
+[
+  {
+    "name": "Discharges",
+    "formula": "COUNTROWS(Discharges)",
+    "format": "#,##0",
+    "folder": "Overview",
+    "description": "Count of discharge records, not distinct patients."
+  },
+  {
+    "name": "Hospitals",
+    "formula": "DISTINCTCOUNT(Discharges[HospitalKey])",
+    "format": "#,##0",
+    "folder": "Overview",
+    "description": "Hospitals with discharge records in the selected cohort."
+  },
+  {
+    "name": "Exact LOS Discharges",
+    "formula": "COUNT(Discharges[ExactLOS])",
+    "format": "#,##0",
+    "folder": "Data quality",
+    "description": "Records with exact LOS between 1 and 119 inclusive."
+  },
+  {
+    "name": "Avg LOS (under 120 days)",
+    "formula": "AVERAGE(Discharges[ExactLOS])",
+    "format": "0.00",
+    "folder": "Overview",
+    "description": "Mean exact LOS; excludes 120+ day stays."
+  },
+  {
+    "name": "Median LOS (under 120 days)",
+    "formula": "MEDIAN(Discharges[ExactLOS])",
+    "format": "0.0",
+    "folder": "Overview",
+    "description": "Median exact LOS; excludes 120+ day stays."
+  },
+  {
+    "name": "Censored Stays",
+    "formula": "SUM(Discharges[LOSCensored])",
+    "format": "#,##0",
+    "folder": "Data quality",
+    "description": "Source reports LOS as 120+; exact duration is unknown."
+  },
+  {
+    "name": "Censored Share",
+    "formula": "DIVIDE([Censored Stays], [Discharges])",
+    "format": "0.00%",
+    "folder": "Data quality",
+    "description": "Share of selected discharge records with capped LOS."
+  },
+  {
+    "name": "Estimated Cost",
+    "formula": "SUM(Discharges[EstimatedCost])",
+    "format": "$#,##0",
+    "folder": "Cost",
+    "description": "Sum of estimated costs in nominal 2024 USD; not paid amounts."
+  },
+  {
+    "name": "Avg Estimated Cost",
+    "formula": "AVERAGE(Discharges[EstimatedCost])",
+    "format": "$#,##0",
+    "folder": "Cost",
+    "description": "Mean estimated cost per selected discharge."
+  },
+  {
+    "name": "Median Estimated Cost",
+    "formula": "MEDIAN(Discharges[EstimatedCost])",
+    "format": "$#,##0",
+    "folder": "Cost",
+    "description": "Median estimated cost per selected discharge, including long stays."
+  },
+  {
+    "name": "Charges",
+    "formula": "SUM(Discharges[Charges])",
+    "format": "$#,##0",
+    "folder": "Cost",
+    "description": "Billed charges, distinct from cost and actual payment."
+  },
+  {
+    "name": "Matched Discharges",
+    "formula": "CALCULATE([Discharges], KEEPFILTERS(Discharges[BenchmarkEligible] = 1))",
+    "format": "#,##0",
+    "folder": "Peer comparison",
+    "description": "Exact LOS with at least 30 peer records across 3 other hospitals in its stratum."
+  },
+  {
+    "name": "Benchmark Coverage",
+    "formula": "DIVIDE([Matched Discharges], [Discharges])",
+    "format": "0.00%",
+    "folder": "Peer comparison",
+    "description": "Matched discharges divided by all selected discharges."
+  },
+  {
+    "name": "Observed Matched Days",
+    "formula": "CALCULATE(SUM(Discharges[ExactLOS]), KEEPFILTERS(Discharges[BenchmarkEligible] = 1))",
+    "format": "#,##0",
+    "folder": "Peer comparison",
+    "description": "Observed bed-days for the matched subset only."
+  },
+  {
+    "name": "Expected Matched Days",
+    "formula": "SUM(Discharges[ExpectedLOS])",
+    "format": "#,##0.0",
+    "folder": "Peer comparison",
+    "description": "Sum of fixed leave-one-hospital-out peer means for selected matched records."
+  },
+  {
+    "name": "Observed Matched LOS",
+    "formula": "DIVIDE([Observed Matched Days], [Matched Discharges])",
+    "format": "0.00",
+    "folder": "Peer comparison",
+    "description": "Mean observed exact LOS for the matched subset."
+  },
+  {
+    "name": "Expected Matched LOS",
+    "formula": "DIVIDE([Expected Matched Days], [Matched Discharges])",
+    "format": "0.00",
+    "folder": "Peer comparison",
+    "description": "Mean peer-expected LOS for the same matched subset."
+  },
+  {
+    "name": "LOS Index",
+    "formula": "IF([Matched Discharges] >= 30, DIVIDE([Observed Matched Days], [Expected Matched Days]))",
+    "format": "0.00\"x\"",
+    "folder": "Peer comparison",
+    "description": "1.0 means observed equals expected. Suppressed below 30 matched records. Descriptive, not a clinical quality score."
+  },
+  {
+    "name": "Peer Reference",
+    "formula": "IF([Matched Discharges] >= 30, 1.0)",
+    "format": "0.00\"x\"",
+    "folder": "Peer comparison",
+    "description": "Reference value for the descriptive LOS index."
+  },
+  {
+    "name": "Selected Reduction",
+    "formula": "SELECTEDVALUE(Scenario[ReductionPct], 0.05)",
+    "format": "0.0%",
+    "folder": "Scenario",
+    "description": "Illustrative assumption; defaults to 5% if no single scenario is selected."
+  },
+  {
+    "name": "Scenario Bed Days",
+    "formula": "[Observed Matched Days] * [Selected Reduction]",
+    "format": "#,##0.0",
+    "folder": "Scenario",
+    "description": "Hypothetical reduction in matched observed days; not a forecast or measured saving."
+  },
+  {
+    "name": "Scenario Remaining Days",
+    "formula": "[Observed Matched Days] - [Scenario Bed Days]",
+    "format": "#,##0.0",
+    "folder": "Scenario",
+    "description": "Matched baseline days less illustrative scenario reduction."
+  },
+  {
+    "name": "Eligible Avg Cost",
+    "formula": "IF([Matched Discharges] >= 30, [Avg Estimated Cost])",
+    "format": "$#,##0",
+    "folder": "Peer comparison",
+    "description": "Raw average cost; available when at least 30 LOS-matched records exist. Cost itself is not adjusted."
+  },
+  {
+    "name": "LOS Variance Days",
+    "formula": "[Observed Matched Days] - [Expected Matched Days]",
+    "format": "+#,##0.0;-#,##0.0;0.0",
+    "folder": "Peer comparison",
+    "description": "Signed difference between observed and peer-expected matched bed-days."
+  },
+  {
+    "name": "Hospital Cost Rank",
+    "formula": "RANKX(ALLSELECTED(Hospitals[HospitalName]), [Estimated Cost], , DESC, SKIP)",
+    "format": "#,##0",
+    "folder": "Cost",
+    "description": "Dynamic hospital rank by estimated cost inside the current slicer selection."
+  },
+  {
+    "name": "Cumulative Estimated Cost",
+    "formula": "VAR CurrentRank = [Hospital Cost Rank] VAR RankedHospitals = TOPN(CurrentRank, ALLSELECTED(Hospitals[HospitalName]), [Estimated Cost], DESC, Hospitals[HospitalName], ASC) RETURN SUMX(RankedHospitals, CALCULATE([Estimated Cost]))",
+    "format": "$#,##0",
+    "folder": "Cost",
+    "description": "Running estimated cost across hospitals ranked from highest to lowest cost."
+  },
+  {
+    "name": "Cumulative Cost %",
+    "formula": "DIVIDE([Cumulative Estimated Cost], CALCULATE([Estimated Cost], ALLSELECTED(Hospitals[HospitalName])))",
+    "format": "0.0%",
+    "folder": "Cost",
+    "description": "Cumulative share of selected estimated cost for the hospital Pareto visual."
+  },
+  {
+    "name": "Scenario Bridge Value",
+    "formula": "SWITCH(SELECTEDVALUE(ScenarioBridge[Step]), \"Observed matched days\", [Observed Matched Days], \"Illustrative reduction\", -[Scenario Bed Days], \"Scenario remaining days\", [Scenario Remaining Days])",
+    "format": "#,##0.0",
+    "folder": "Scenario",
+    "description": "Signed values for the scenario waterfall; requires the disconnected ScenarioBridge table."
+  }
+]

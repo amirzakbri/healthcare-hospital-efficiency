@@ -1,0 +1,37 @@
+[
+  {
+    "health_service_area": "New York City",
+    "discharges": "996124"
+  },
+  {
+    "health_service_area": "Long Island",
+    "discharges": "359214"
+  },
+  {
+    "health_service_area": "Hudson Valley",
+    "discharges": "243870"
+  },
+  {
+    "health_service_area": "Capital/Adirondacks",
+    "discharges": "143613"
+  },
+  {
+    "health_service_area": "Western NY",
+    "discharges": "142041"
+  },
+  {
+    "health_service_area": "Finger Lakes",
+    "discharges": "140528"
+  },
+  {
+    "health_service_area": "Central NY",
+    "discharges": "138048"
+  },
+  {
+    "health_service_area": "Southern Tier",
+    "discharges": "28004"
+  },
+  {
+    "discharges": "5295"
+  }
+]

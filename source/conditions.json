@@ -1,0 +1,177 @@
+[
+  {
+    "apr_drg_code": "640",
+    "apr_drg_description": "NEONATE BIRTH WEIGHT > 2499 GRAMS, NORMAL NEWBORN OR NEONATE WITH OTHER PROBLEM",
+    "discharges": "81177"
+  },
+  {
+    "apr_drg_code": "560",
+    "apr_drg_description": "VAGINAL DELIVERY",
+    "discharges": "61530"
+  },
+  {
+    "apr_drg_code": "720",
+    "apr_drg_description": "SEPTICEMIA AND DISSEMINATED INFECTIONS",
+    "discharges": "56391"
+  },
+  {
+    "apr_drg_code": "540",
+    "apr_drg_description": "CESAREAN SECTION WITHOUT STERILIZATION",
+    "discharges": "28853"
+  },
+  {
+    "apr_drg_code": "194",
+    "apr_drg_description": "HEART FAILURE",
+    "discharges": "25060"
+  },
+  {
+    "apr_drg_code": "750",
+    "apr_drg_description": "SCHIZOPHRENIA",
+    "discharges": "17243"
+  },
+  {
+    "apr_drg_code": "053",
+    "apr_drg_description": "SEIZURE",
+    "discharges": "13604"
+  },
+  {
+    "apr_drg_code": "139",
+    "apr_drg_description": "OTHER PNEUMONIA",
+    "discharges": "12358"
+  },
+  {
+    "apr_drg_code": "463",
+    "apr_drg_description": "KIDNEY AND URINARY TRACT INFECTIONS",
+    "discharges": "12344"
+  },
+  {
+    "apr_drg_code": "175",
+    "apr_drg_description": "PERCUTANEOUS CARDIAC INTERVENTION WITHOUT AMI",
+    "discharges": "11176"
+  },
+  {
+    "apr_drg_code": "045",
+    "apr_drg_description": "CVA AND PRECEREBRAL OCCLUSION WITH INFARCTION",
+    "discharges": "10733"
+  },
+  {
+    "apr_drg_code": "137",
+    "apr_drg_description": "MAJOR RESPIRATORY INFECTIONS AND INFLAMMATIONS",
+    "discharges": "10729"
+  },
+  {
+    "apr_drg_code": "383",
+    "apr_drg_description": "CELLULITIS AND OTHER SKIN INFECTIONS",
+    "discharges": "10446"
+  },
+  {
+    "apr_drg_code": "141",
+    "apr_drg_description": "ASTHMA",
+    "discharges": "10222"
+  },
+  {
+    "apr_drg_code": "420",
+    "apr_drg_description": "DIABETES",
+    "discharges": "10193"
+  },
+  {
+    "apr_drg_code": "201",
+    "apr_drg_description": "CARDIAC ARRHYTHMIA AND CONDUCTION DISORDERS",
+    "discharges": "9965"
+  },
+  {
+    "apr_drg_code": "469",
+    "apr_drg_description": "ACUTE KIDNEY INJURY",
+    "discharges": "9911"
+  },
+  {
+    "apr_drg_code": "326",
+    "apr_drg_description": "ELECTIVE KNEE JOINT REPLACEMENT",
+    "discharges": "9746"
+  },
+  {
+    "apr_drg_code": "403",
+    "apr_drg_description": "PROCEDURES FOR OBESITY",
+    "discharges": "9631"
+  },
+  {
+    "apr_drg_code": "254",
+    "apr_drg_description": "OTHER DIGESTIVE SYSTEM DIAGNOSES",
+    "discharges": "9344"
+  },
+  {
+    "apr_drg_code": "249",
+    "apr_drg_description": "OTHER GASTROENTERITIS, NAUSEA AND VOMITING",
+    "discharges": "9076"
+  },
+  {
+    "apr_drg_code": "204",
+    "apr_drg_description": "SYNCOPE AND COLLAPSE",
+    "discharges": "8355"
+  },
+  {
+    "apr_drg_code": "140",
+    "apr_drg_description": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE",
+    "discharges": "7930"
+  },
+  {
+    "apr_drg_code": "058",
+    "apr_drg_description": "OTHER DISORDERS OF NERVOUS SYSTEM",
+    "discharges": "7746"
+  },
+  {
+    "apr_drg_code": "775",
+    "apr_drg_description": "ALCOHOL ABUSE AND DEPENDENCE",
+    "discharges": "7660"
+  },
+  {
+    "apr_drg_code": "263",
+    "apr_drg_description": "CHOLECYSTECTOMY",
+    "discharges": "7448"
+  },
+  {
+    "apr_drg_code": "351",
+    "apr_drg_description": "OTHER MUSCULOSKELETAL SYSTEM AND CONNECTIVE TISSUE DIAGNOSES",
+    "discharges": "7289"
+  },
+  {
+    "apr_drg_code": "566",
+    "apr_drg_description": "ANTEPARTUM WITHOUT O.R. PROCEDURE",
+    "discharges": "7288"
+  },
+  {
+    "apr_drg_code": "753",
+    "apr_drg_description": "BIPOLAR DISORDERS",
+    "discharges": "7283"
+  },
+  {
+    "apr_drg_code": "133",
+    "apr_drg_description": "RESPIRATORY FAILURE",
+    "discharges": "7214"
+  },
+  {
+    "apr_drg_code": "751",
+    "apr_drg_description": "MAJOR DEPRESSIVE DISORDERS AND OTHER OR UNSPECIFIED PSYCHOSES",
+    "discharges": "7209"
+  },
+  {
+    "apr_drg_code": "466",
+    "apr_drg_description": "MALFUNCTION, REACTION, COMPLICATION OF GENITOURINARY DEVICE OR PROCEDURE",
+    "discharges": "7152"
+  },
+  {
+    "apr_drg_code": "710",
+    "apr_drg_description": "INFECTIOUS AND PARASITIC DISEASES INCLUDING HIV WITH O.R. PROCEDURE",
+    "discharges": "7024"
+  },
+  {
+    "apr_drg_code": "663",
+    "apr_drg_description": "OTHER ANEMIA AND DISORDERS OF BLOOD AND BLOOD-FORMING ORGANS",
+    "discharges": "6745"
+  },
+  {
+    "apr_drg_code": "347",
+    "apr_drg_description": "OTHER BACK AND NECK DISORDERS, FRACTURES AND INJURIES",
+    "discharges": "6679"
+  }
+]

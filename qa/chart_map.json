@@ -1,0 +1,136 @@
+[
+  {
+    "page": "01 | Hospital activity and cost",
+    "title": "Estimated cost concentration by hospital",
+    "question": "How concentrated is selected estimated cost among hospitals?",
+    "family": "Decomposition and progression",
+    "type": "line and clustered column Pareto",
+    "category": "Hospitals.HospitalName",
+    "measures": [
+      "Estimated Cost",
+      "Cumulative Cost %"
+    ],
+    "grain": "Hospital",
+    "zero_baseline": "Columns start at zero; cumulative line 0-100%",
+    "palette": "blue columns; gold cumulative line",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "01 | Hospital activity and cost",
+    "title": "Discharges by length-of-stay band",
+    "question": "How are discharges distributed across ordered LOS bands?",
+    "family": "Distribution",
+    "type": "column",
+    "category": "StayBands.StayBand",
+    "measures": [
+      "Discharges"
+    ],
+    "zero_baseline": true,
+    "palette": "blue",
+    "delivery": "Planned native Power BI visual; field mapping in docs/POWER_BI_WEB_GUIDE.md"
+  },
+  {
+    "page": "01 | Hospital activity and cost",
+    "title": "Average LOS by severity - under 120 days",
+    "question": "How does mean exact LOS differ by severity?",
+    "family": "Comparison",
+    "type": "column",
+    "category": "Severity.Severity",
+    "measures": [
+      "Avg LOS (under 120 days)"
+    ],
+    "zero_baseline": true,
+    "palette": "blue",
+    "delivery": "Planned native Power BI visual; field mapping in docs/POWER_BI_WEB_GUIDE.md"
+  },
+  {
+    "page": "02 | Compare hospital stays",
+    "title": "Hospital cost and LOS index",
+    "question": "How do hospital cost, LOS index, and matched volume relate?",
+    "family": "Relationship",
+    "type": "quadrant bubble scatter",
+    "grain": "Hospital",
+    "x": "Eligible Avg Cost",
+    "y": "LOS Index",
+    "size": "Matched Discharges",
+    "series": "HospitalCounty",
+    "reference": "LOS Index = 1.00",
+    "minimum_matched_records": 30,
+    "caveat": "Cost is unadjusted; neither axis is a clinical quality score.",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "02 | Compare hospital stays",
+    "title": "Observed minus peer-expected bed-days by severity",
+    "question": "Which severity groups move total observed days above or below peer expectation?",
+    "family": "Uncertainty and benchmark",
+    "type": "waterfall",
+    "category": "Severity.Severity",
+    "measures": [
+      "LOS Variance Days"
+    ],
+    "zero_reference": true,
+    "palette": "blue negative; orange positive; charcoal total",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "02 | Compare hospital stays",
+    "title": "Observed and peer-expected LOS profiles",
+    "question": "Does the observed-to-expected LOS pattern change across conditions and severity levels?",
+    "family": "Uncertainty and benchmark",
+    "type": "line chart with small multiples",
+    "x": "Severity.Severity",
+    "small_multiples": "Conditions.Condition",
+    "measures": [
+      "Observed Matched LOS",
+      "Expected Matched LOS"
+    ],
+    "palette": "blue solid observed; gold dashed or open expected",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "03 | Bed-day planning scenario",
+    "title": "Matched bed-day scenario bridge",
+    "question": "How does the selected assumption move baseline matched days to remaining days?",
+    "family": "Decomposition and progression",
+    "type": "waterfall bridge",
+    "category": "ScenarioBridge.Step",
+    "measures": [
+      "Scenario Bridge Value"
+    ],
+    "palette": "charcoal totals; orange reduction",
+    "caveat": "Illustrative assumption; not a forecast or measured saving.",
+    "delivery": "Planned native Power BI visual; exact field mapping and fallback in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "03 | Bed-day planning scenario",
+    "title": "Explore the concentration of scenario bed-days",
+    "question": "Where are scenario bed-days concentrated?",
+    "family": "Decomposition and progression",
+    "type": "decomposition tree",
+    "analyze": "Scenario Bed Days",
+    "explain_by": [
+      "Conditions.Condition",
+      "Severity.Severity",
+      "AgeGroups.AgeGroup",
+      "Hospitals.HospitalCounty",
+      "Hospitals.HospitalName"
+    ],
+    "caveat": "Shows concentration, not causal drivers.",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  },
+  {
+    "page": "03 | Bed-day planning scenario",
+    "title": "Scenario bed-day contribution across severity and county",
+    "question": "How does each county's scenario contribution rank change across severity levels?",
+    "family": "Comparison and ranking",
+    "type": "ribbon",
+    "category": "Severity.Severity",
+    "series": "Hospitals.HospitalCounty",
+    "measures": [
+      "Scenario Bed Days"
+    ],
+    "palette": "five restrained county colors",
+    "delivery": "Planned native Power BI visual; exact field mapping in docs/CREATIVE_VISUAL_UPGRADE.md"
+  }
+]

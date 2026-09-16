@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "tables": {
+    "Discharges": {
+      "rows": 89984,
+      "columns": 21,
+      "table_ref": "A1:U89985"
+    },
+    "Hospitals": {
+      "rows": 52,
+      "columns": 3,
+      "table_ref": "A1:C53"
+    },
+    "Conditions": {
+      "rows": 3,
+      "columns": 3,
+      "table_ref": "A1:C4"
+    },
+    "Severity": {
+      "rows": 4,
+      "columns": 2,
+      "table_ref": "A1:B5"
+    },
+    "AgeGroups": {
+      "rows": 4,
+      "columns": 2,
+      "table_ref": "A1:B5"
+    },
+    "Payers": {
+      "rows": 9,
+      "columns": 1,
+      "table_ref": "A1:A10"
+    },
+    "StayBands": {
+      "rows": 7,
+      "columns": 2,
+      "table_ref": "A1:B8"
+    },
+    "Scenario": {
+      "rows": 8,
+      "columns": 1,
+      "table_ref": "A1:A9"
+    }
+  },
+  "fact_rows": 89984,
+  "exact_los_count": 89922,
+  "censored_los_count": 62,
+  "estimated_cost": "3477656909.17",
+  "hospital_keys_preserved": [
+    "001464",
+    "001464",
+    "001454"
+  ],
+  "export_method": "Artifact-tool styling and structure, with streamed XML data insertion due to exporter size limit",
+  "bytes": 10257273
+}

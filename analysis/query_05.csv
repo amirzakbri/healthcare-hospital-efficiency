@@ -1,0 +1,19 @@
+Disposition,Discharges,AvgExactLOS
+Home or Self Care,36169,5.39
+Home w/ Home Health Services,20948,7.56
+Skilled Nursing Home,13863,12.65
+Expired,7690,10.35
+Left Against Medical Advice,3841,3.74
+Short-term Hospital,2073,5.66
+Hospice - Medical Facility,1414,11.64
+Hospice - Home,1105,10.9
+Inpatient Rehabilitation Facility,956,14.72
+Medicaid Cert Nursing Facility,576,10.52
+Facility w/ Custodial/Supportive Care,485,8.88
+Medicare Cert Long Term Care Hospital,349,15.31
+Psychiatric Hospital or Unit of Hosp,207,10.61
+Another Type Not Listed,161,7.93
+Cancer Center or Childrens Hospital,90,11.17
+Court/Law Enforcement,45,6.27
+Federal Health Care Facility,11,4.18
+Critical Access Hospital,1,1.0

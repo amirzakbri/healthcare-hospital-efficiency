@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "row_count": 89984,
+  "cost_cents": 347765690917,
+  "all_peer_strata_reconciled": 2069,
+  "filter_test_cases": 7,
+  "checks": [
+    "raw-to-CSV-to-SQL row and cost totals",
+    "dimension join cardinality",
+    "complete condition and stay-band reconciliation",
+    "all leave-one-hospital-out strata",
+    "scenario arithmetic for 0%, 5%, 10%"
+  ],
+  "not_executed": "DAX evaluation and report interaction testing in the user Power BI service account"
+}

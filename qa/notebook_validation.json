@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "code_cells": 7,
+  "execution": "All code cells executed in order in one Python namespace. No IPython-only syntax used.",
+  "format": "nbformat 4.5 structure checked"
+}

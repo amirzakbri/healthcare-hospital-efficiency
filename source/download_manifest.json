@@ -1,0 +1,41 @@
+{
+  "publisher": "New York State Department of Health",
+  "dataset_id": "sf4k-39ay",
+  "dataset_name": "Hospital Inpatient Discharges (SPARCS De-Identified): 2024",
+  "source_url": "https://health.data.ny.gov/d/sf4k-39ay",
+  "metadata_url": "https://health.data.ny.gov/api/views/sf4k-39ay.json",
+  "retrieved_at_utc": "2026-09-04T09:58:07.042058+00:00",
+  "source_rows_updated_at": 1760103462,
+  "where": "health_service_area='New York City' AND apr_drg_code IN ('194','139','720') AND age_group != '0-17'",
+  "select": [
+    ":id AS source_row_id",
+    "health_service_area",
+    "hospital_county",
+    "permanent_facility_id",
+    "facility_name",
+    "age_group",
+    "length_of_stay",
+    "type_of_admission",
+    "patient_disposition",
+    "discharge_year",
+    "apr_drg_code",
+    "apr_drg_description",
+    "apr_severity_of_illness_code",
+    "apr_severity_of_illness",
+    "apr_risk_of_mortality",
+    "payment_typology_1",
+    "emergency_department_indicator",
+    "total_charges",
+    "total_costs"
+  ],
+  "count_query_url": "https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28%2A%29+AS+n&%24where=health_service_area%3D%27New+York+City%27+AND+apr_drg_code+IN+%28%27194%27%2C%27139%27%2C%27720%27%29+AND+age_group+%21%3D+%270-17%27",
+  "download_urls": [
+    "https://health.data.ny.gov/resource/sf4k-39ay.csv?%24select=%3Aid+AS+source_row_id%2Chealth_service_area%2Chospital_county%2Cpermanent_facility_id%2Cfacility_name%2Cage_group%2Clength_of_stay%2Ctype_of_admission%2Cpatient_disposition%2Cdischarge_year%2Capr_drg_code%2Capr_drg_description%2Capr_severity_of_illness_code%2Capr_severity_of_illness%2Capr_risk_of_mortality%2Cpayment_typology_1%2Cemergency_department_indicator%2Ctotal_charges%2Ctotal_costs&%24where=health_service_area%3D%27New+York+City%27+AND+apr_drg_code+IN+%28%27194%27%2C%27139%27%2C%27720%27%29+AND+age_group+%21%3D+%270-17%27&%24order=%3Aid&%24limit=50000&%24offset=0",
+    "https://health.data.ny.gov/resource/sf4k-39ay.csv?%24select=%3Aid+AS+source_row_id%2Chealth_service_area%2Chospital_county%2Cpermanent_facility_id%2Cfacility_name%2Cage_group%2Clength_of_stay%2Ctype_of_admission%2Cpatient_disposition%2Cdischarge_year%2Capr_drg_code%2Capr_drg_description%2Capr_severity_of_illness_code%2Capr_severity_of_illness%2Capr_risk_of_mortality%2Cpayment_typology_1%2Cemergency_department_indicator%2Ctotal_charges%2Ctotal_costs&%24where=health_service_area%3D%27New+York+City%27+AND+apr_drg_code+IN+%28%27194%27%2C%27139%27%2C%27720%27%29+AND+age_group+%21%3D+%270-17%27&%24order=%3Aid&%24limit=50000&%24offset=50000"
+  ],
+  "row_count": 89984,
+  "file": "data/raw/nyc_adult_selected_discharges_2024.csv",
+  "sha256": "fb91e6546ccd37c2345fecd51dc35cb36ba670e82c8d58660b8d4e6c10330cd6",
+  "grain": "One public de-identified discharge record; not one unique patient",
+  "scope": "Adult age groups; NYC hospital service area; 2024; APR DRG 139, 194, 720"
+}

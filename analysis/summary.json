@@ -1,0 +1,33 @@
+{
+  "discharges": 89984,
+  "hospitals": 52,
+  "avg_exact_los": 7.749405039923489,
+  "median_exact_los": 5.0,
+  "estimated_cost": 3477656909.17,
+  "avg_estimated_cost": 38647.502991309564,
+  "median_estimated_cost": 23484.435,
+  "censored_los_count": 62,
+  "benchmark_eligible": 89877,
+  "benchmark_coverage": 0.998810899715505,
+  "matched_observed_days": 696468,
+  "matched_expected_days": 696827.2086807302,
+  "los_index": 0.9994845082450063,
+  "five_percent_scenario_bed_days": 34823.4,
+  "raw_preview": [
+    {
+      "HospitalName": "NEW YORK-PRESBYTERIAN HOSPITAL - COLUMBIA PRESBYTERIAN CENTER",
+      "ConditionDescription": "SEPTICEMIA AND DISSEMINATED INFECTIONS",
+      "ExactLOS": 1.0
+    },
+    {
+      "HospitalName": "NEW YORK-PRESBYTERIAN HOSPITAL - COLUMBIA PRESBYTERIAN CENTER",
+      "ConditionDescription": "HEART FAILURE",
+      "ExactLOS": 10.0
+    },
+    {
+      "HospitalName": "METROPOLITAN HOSPITAL CENTER",
+      "ConditionDescription": "HEART FAILURE",
+      "ExactLOS": 8.0
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+// Count of discharge records, not distinct patients.
+Discharges = COUNTROWS(Discharges)
+
+// Hospitals with discharge records in the selected cohort.
+Hospitals = DISTINCTCOUNT(Discharges[HospitalKey])
+
+// Records with exact LOS between 1 and 119 inclusive.
+Exact LOS Discharges = COUNT(Discharges[ExactLOS])
+
+// Mean exact LOS; excludes 120+ day stays.
+Avg LOS (under 120 days) = AVERAGE(Discharges[ExactLOS])
+
+// Median exact LOS; excludes 120+ day stays.
+Median LOS (under 120 days) = MEDIAN(Discharges[ExactLOS])
+
+// Source reports LOS as 120+; exact duration is unknown.
+Censored Stays = SUM(Discharges[LOSCensored])
+
+// Share of selected discharge records with capped LOS.
+Censored Share = DIVIDE([Censored Stays], [Discharges])
+
+// Sum of estimated costs in nominal 2024 USD; not paid amounts.
+Estimated Cost = SUM(Discharges[EstimatedCost])
+
+// Mean estimated cost per selected discharge.
+Avg Estimated Cost = AVERAGE(Discharges[EstimatedCost])
+
+// Median estimated cost per selected discharge, including long stays.
+Median Estimated Cost = MEDIAN(Discharges[EstimatedCost])
+
+// Billed charges, distinct from cost and actual payment.
+Charges = SUM(Discharges[Charges])
+
+// Exact LOS with at least 30 peer records across 3 other hospitals in its stratum.
+Matched Discharges = CALCULATE([Discharges], KEEPFILTERS(Discharges[BenchmarkEligible] = 1))
+
+// Matched discharges divided by all selected discharges.
+Benchmark Coverage = DIVIDE([Matched Discharges], [Discharges])
+
+// Observed bed-days for the matched subset only.
+Observed Matched Days = CALCULATE(SUM(Discharges[ExactLOS]), KEEPFILTERS(Discharges[BenchmarkEligible] = 1))
+
+// Sum of fixed leave-one-hospital-out peer means for selected matched records.
+Expected Matched Days = SUM(Discharges[ExpectedLOS])
+
+// Mean observed exact LOS for the matched subset.
+Observed Matched LOS = DIVIDE([Observed Matched Days], [Matched Discharges])
+
+// Mean peer-expected LOS for the same matched subset.
+Expected Matched LOS = DIVIDE([Expected Matched Days], [Matched Discharges])
+
+// 1.0 means observed equals expected. Suppressed below 30 matched records. Descriptive, not a clinical quality score.
+LOS Index = IF([Matched Discharges] >= 30, DIVIDE([Observed Matched Days], [Expected Matched Days]))
+
+// Reference value for the descriptive LOS index.
+Peer Reference = IF([Matched Discharges] >= 30, 1.0)
+
+// Illustrative assumption; defaults to 5% if no single scenario is selected.
+Selected Reduction = SELECTEDVALUE(Scenario[ReductionPct], 0.05)
+
+// Hypothetical reduction in matched observed days; not a forecast or measured saving.
+Scenario Bed Days = [Observed Matched Days] * [Selected Reduction]
+
+// Matched baseline days less illustrative scenario reduction.
+Scenario Remaining Days = [Observed Matched Days] - [Scenario Bed Days]
+
+// Raw average cost; available when at least 30 LOS-matched records exist. Cost itself is not adjusted.
+Eligible Avg Cost = IF([Matched Discharges] >= 30, [Avg Estimated Cost])
+
+// Signed difference between observed and peer-expected matched bed-days.
+LOS Variance Days = [Observed Matched Days] - [Expected Matched Days]
+
+// Dynamic rank of hospitals by estimated cost inside the current slicer selection.
+Hospital Cost Rank =
+RANKX(
+    ALLSELECTED(Hospitals[HospitalName]),
+    [Estimated Cost],
+    ,
+    DESC,
+    SKIP
+)
+
+// Running estimated cost across hospitals ranked from highest to lowest cost.
+Cumulative Estimated Cost =
+VAR CurrentRank = [Hospital Cost Rank]
+VAR RankedHospitals =
+    TOPN(
+        CurrentRank,
+        ALLSELECTED(Hospitals[HospitalName]),
+        [Estimated Cost], DESC,
+        Hospitals[HospitalName], ASC
+    )
+RETURN
+    SUMX(RankedHospitals, CALCULATE([Estimated Cost]))
+
+// Cumulative share of selected estimated cost for the hospital Pareto visual.
+Cumulative Cost % =
+DIVIDE(
+    [Cumulative Estimated Cost],
+    CALCULATE([Estimated Cost], ALLSELECTED(Hospitals[HospitalName]))
+)
+
+// Values for the three-step scenario bridge; ScenarioBridge is a disconnected calculated table.
+Scenario Bridge Value =
+SWITCH(
+    SELECTEDVALUE(ScenarioBridge[Step]),
+    "Observed matched days", [Observed Matched Days],
+    "Illustrative reduction", -[Scenario Bed Days],
+    "Scenario remaining days", [Scenario Remaining Days]
+)
